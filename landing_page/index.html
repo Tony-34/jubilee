@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jubilee</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#BA0C2F">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" crossorigin="anonymous">
+
+    <style>
+        @font-face {
+            font-family: 'Futura';
+            font-display: auto;
+            src: url("fonts/FuturaBT-Book.woff") format("woff");
+            src: url("fonts/FuturaBT-Book.woff2") format("woff2");
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #BA0C2F;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5B6770;
+        }
+
+        html {}
+
+        body {
+            font-family: 'Futura', sans-serif;
+        }
+
+        ._hidden {
+            display: none !important;
+        }
+
+        header {
+            background-color: #BA0C2F;
+        }
+
+        .bg-red {
+            background-color: #BA0C2F;
+        }
+
+        .margin-auto {
+            margin: 0 auto;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        ._navbar {
+            align-items: unset;
+            padding: 0;
+        }
+
+        ._navbar .navbar-collapse {
+            align-items: unset;
+        }
+
+        ._btn-search {
+            -webkit-appearance: none;
+            border: none;
+            padding: 0;
+            margin-left: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        ._main-naviagtion-ul {
+            margin-right: 0.8rem;
+        }
+
+        ._main-navigation-ul .nav-item {
+            display: inline-flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        ._main-navigation-ul .nav-item.active-link::after {
+            transform: translateX(0);
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        ._main-navigation-ul .nav-item::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: #fff;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        ._main-navigation-ul .nav-item:hover::after {
+            transform: translateX(0);
+        }
+
+        ._main-navigation-ul .nav-item .nav-link {
+            margin-right: 0.4rem;
+            margin-left: 0.4rem;
+        }
+
+        ._navbar-select {
+            align-items: center;
+        }
+
+        ._navbar-select .nav-item {
+            font-size: 0.9rem;
+            margin-right: 0.4rem;
+            margin-left: 0.4rem;
+        }
+
+        .navbar-logo {
+            width: 100px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #_navbar-search-form {
+            display: none !important;
+        }
+
+        /* hero section */
+        .hero-section {
+            position: relative;
+            min-height: 650px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-section .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .hero-section .content {
+            position: relative;
+        }
+
+        .hero-section h1 {
+            color: #fff;
+            text-shadow: 1px 1px 0px #383838;
+            font-size: 2.8em;
+        }
+
+        .hero-section h1 span {
+            color: #BA0C2F;
+        }
+
+        .hero-section .cta-wrapper {
+            text-align: center;
+            padding-top: 1.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .cta-wrapper a {
+            background-color: #BA0C2F;
+            color: #fff;
+            font-size: 1.3rem;
+            text-decoration: none;
+            min-width: 200px;
+            display: inline-block;
+            text-align: center;
+            min-height: 35px;
+            padding: 0.3em 0.5em;
+            border-radius: 25px;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .cta-wrapper a.primary-link {
+            background-color: #BA0C2F;
+            color: #fff;
+        }
+
+        .cta-wrapper a.flat-link {
+            border-radius: 4px;
+            width: 100%;
+            max-width: 100%;
+            min-width: auto;
+            font-size: 1rem;
+        }
+
+        .cta-wrapper a.outline-link {
+            background-color: transparent;
+            color: #fff;
+            border: 1px solid #fff;
+            font-size: 1rem;
+        }
+
+        .cta-wrapper a:hover {
+            opacity: 0.6;
+            transform: scale(0.98);
+        }
+
+        /* intro section */
+        .intro-section {
+            background-color: #5B6770;
+            padding-top: 3em;
+            padding-bottom: 3em;
+        }
+
+        .intro-section .content {
+            color: #fff;
+        }
+
+        .intro-section .content p {
+            color: #fff;
+        }
+
+        .intro-section .col-md-4 .content * {
+            margin: 0;
+        }
+
+        .intro-section .cta-wrapper {
+            padding-top: 1em;
+        }
+
+        .products-section-1 {
+            background-color: #fff;
+            padding-top: 3em;
+            padding-bottom: 3em;
+        }
+
+        .products-section-1 .title,
+        .products-section-2 .title {
+            text-align: center;
+            margin: 1.5em auto;
+            margin-top: 0;
+        }
+
+        .products-section-1 .row {
+            justify-content: space-between;
+        }
+
+        .products-section-1 .row .col {
+            width: 25%;
+            max-width: 100%;
+            flex-grow: unset;
+            flex-basis: unset;
+        }
+
+        .products-section-1 .row .col .content {
+            background: #EDF2F7;
+        }
+
+        .products-section-1 .row .col .content header {
+            background: #EDF2F7;
+            position: relative;
+            min-height: 165px;
+        }
+
+        .products-section-1 .row .col .content header .bg {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .products-section-1 .row .col .content .inner {
+            padding: 1rem;
+        }
+
+        .products-section-1 .row .col .content .inner h5 {
+            color: #BA0B2F;
+        }
+
+        .products-section-1 .row .col .content .inner p {
+            font-size: 0.85em;
+        }
+
+        .products-section-1 .row .col .content .inner .cta-wrapper {}
+
+        .products-section-1 .row .col .content .inner .cta-wrapper a {}
+
+        .products-section-2 {
+            background-color: #F7FAFC;
+            padding-top: 3em;
+            padding-bottom: 3em;
+        }
+
+        .products-section-2 .container {
+            position: relative;
+        }
+
+        .products-section-2 .swiper-container {
+            max-width: 80%;
+        }
+
+        .products-section-2 .swiper-wrapper {}
+
+        .products-section-2 .swiper-slide {
+            width: 18%;
+            text-align: center;
+        }
+
+        .products-section-2 .swiper-slide a {
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .products-section-2 .swiper-slide a img {
+            width: 120px;
+            margin: 0 auto;
+        }
+
+        .products-section-2 .swiper-slide a h5 {
+            padding-top: 1em;
+            text-align: center;
+            color: #5B6770;
+        }
+
+        .products-section-2 .swiper-button-next,
+        .products-section-2 .swiper-container-rtl .swiper-button-prev {
+            background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23707070'%2F><%2Fsvg>");
+        }
+
+        .products-section-2 .swiper-button-prev,
+        .products-section-2 .swiper-container-rtl .swiper-button-next {
+            background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23707070'%2F><%2Fsvg>");
+        }
+
+        .products-section-2 .swiper-button-next,
+        .products-section-2 .swiper-button-prev {
+            margin-top: -55px;
+            background-size: 20px 30px;
+            outline: none;
+        }
+
+        .featured-product-section {
+            background: #5B6770;
+            position: relative;
+        }
+
+        .featured-product-section-2 {}
+
+        .featured-product-section .container {}
+
+        .featured-product-section .col-text {
+            padding-top: 3em;
+            padding-bottom: 3em;
+        }
+
+        .featured-product-section .col-text .content {
+            max-width: 85%;
+        }
+
+        .featured-product-section .col-text .content * {
+            color: #fff;
+        }
+
+        .featured-product-section .col-text .content .title-left {
+            margin-bottom: 1em;
+        }
+
+        .featured-product-section .col-img {
+            position: static;
+            padding-top: 3em;
+            padding-bottom: 3em;
+        }
+
+        .featured-product-section .col-img .bg {
+            top: 0;
+            height: 100%;
+            width: 50%;
+            right: 0;
+            position: absolute;
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .featured-product-section .col-img .content {
+            position: relative;
+            padding-left: 2em;
+        }
+
+        .featured-product-section .col-img .content .h1 {
+            color: #fff;
+            margin: 0;
+        }
+
+        .featured-product-section .col-img .content .big-text {
+            font-size: 7em;
+            line-height: 1.2;
+            color: #fff;
+            font-weight: 900;
+        }
+
+        .featured-product-section .col-img .content .h2 {
+            margin: 0;
+            color: #fff;
+            margin-bottom: 1em;
+        }
+
+        .featured-product-section .col-img .content .cta-wrapper .outline-link {
+            font-size: 1.3em;
+        }
+
+        .featured-product-section-2 .col-img .bg {
+            right: auto;
+            left: 0;
+        }
+
+        .featured-product-section-2 .col-text {
+            padding-left: 3em;
+        }
+
+        .featured-product-section-2 {
+            background: #EDF2F7;
+        }
+
+        .featured-product-section-2 .col-text .content * {
+            color: #5B6770;
+        }
+
+        .featured-product-section-2 .col-img .content .h1 {
+            color: #fff;
+            margin: 0;
+            text-shadow: 1px 1px 0px #383838;
+            text-align: right;
+            margin-bottom: 0.4em;
+            padding-right: 0.5em;
+        }
+
+        .featured-product-section-2 .col-img .content .cta-wrapper {
+            padding-top: 1em;
+            text-align: end;
+            margin-right: 0.5em;
+            display: inherit;
+            padding-right: 0.5em;
+        }
+
+        .featured-product-section-2 .col-img .content .cta-wrapper .outline-link {
+            font-size: 1.3em;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-section {
+            padding-top: 3em;
+            padding-bottom: 3em;
+            background-color: #fff;
+        }
+
+        .cta-section .col-md-3 {
+            padding-top: 1em;
+        }
+
+        .cta-section .col-md-3 .card {
+            box-shadow: 1px 3px 3px 2px #ccc;
+            padding: 1em;
+            border-top: 2px solid #5B6770;
+        }
+
+        .cta-section .col-md-3 h4 {
+            color: #5B6770;
+        }
+
+        .cta-section .col-md-3 p {
+            font-size: 0.85em;
+            color: #5B6770;
+        }
+
+        .cta-section .col-md-3 .cta-wrapper a {
+            padding-left: 1em;
+            color: #5B6770;
+            border-color: #5B6770;
+            display: inline-block;
+            min-width: auto;
+            padding-right: 1em;
+        }
+
+        .cta-section .col-md-5 {
+            padding: 1rem;
+            background: #5B6770;
+            border-radius: .25rem;
+            border-top: 2px solid #5B6770;
+        }
+
+        .cta-section .col-md-5 .card {
+            background: transparent;
+            border: none;
+        }
+
+        .cta-section .col-md-5 h6 {
+            color: #fff;
+        }
+
+        .cta-section .col-md-5 h2 {
+            color: #fff;
+        }
+
+        .cta-section .col-md-5 .cta-wrapper {
+            margin-top: 0.5em;
+        }
+
+        .subscription-section {
+            background: #BA0C2F;
+            padding-top: 2em;
+            padding-bottom: 2em;
+        }
+
+        .subscription-section .col-md-6 h2 {
+            text-align: center;
+            color: #fff;
+            margin: 0;
+        }
+
+        .subscription-section .input-group {
+            margin-bottom: 0 !important;
+        }
+
+        .subscription-section .input-group .input-group-append .input-group-text {
+            background: #5B6770;
+            border-color: #5B6770;
+        }
+
+        .subscription-section .input-group .input-group-append .input-group-text button {
+            -webkit-appearance: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+        }
+
+        .main-footer {
+            padding-top: 3em;
+            padding-bottom: 3em;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: top center;
+        }
+
+        .main-footer .top-row {}
+
+        .main-footer .top-row .col-f {}
+
+        .main-footer .top-row .col-f h4 {
+            color: #fff;
+            font-weight: 550;
+        }
+
+        .main-footer .top-row .col-f ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5em;
+        }
+
+        .main-footer .top-row .col-f ul li {
+            color: #fff;
+            margin-bottom: 0.15em;
+        }
+
+        .main-footer .top-row .col-f ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .main-footer .bottom-row {
+            justify-content: space-between;
+            padding-top: 3em;
+            padding-bottom: 3em;
+            margin-top: 3em;
+            border-top: 1px solid #fff;
+        }
+
+
+        .main-footer .bottom-row p,
+        .main-footer .bottom-row a,
+        .main-footer .bottom-row h4 {
+            color: #fff;
+        }
+
+        .main-footer .bottom-row .social-wrapper,
+        .main-footer .bottom-row .social-wrapper .social {
+            display: flex;
+            align-items: center;
+        }
+
+        .main-footer .bottom-row .social-wrapper .social {
+            margin-left: 0.5em;
+        }
+
+        .main-footer .bottom-row .social-wrapper .social a .fab {
+            background-color: #ba0c2f;
+            border-radius: 50%;
+            color: #fff;
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+            margin: auto 3px;
+            width: 40px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        /* quote modal */
+        .quote-modal-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100%;
+            min-height: 100vh;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: visibility 0.3s ease-in-out, opacity 0.5s ease-in-out;
+        }
+
+        .quote-modal-container.open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+
+        .quote-modal-container:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.43);
+        }
+
+        .quote-modal-wrapper {
+            position: relative;
+            background: #fff;
+            max-width: 70%;
+            transform: rotateX(45deg);
+            opacity: 0.5;
+            transition: transform 0.5s ease-in-out, opacity 0.8s ease-in-out;
+        }
+
+
+        .quote-modal-container.open .quote-modal-wrapper {
+            transform: rotateX(0);
+            opacity: 1;
+        }
+
+        .quote-modal-wrapper .modal-container header {
+            background: #5B6770;
+            padding: 1.5em;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .modal-container header a.close-quote-modal {
+            position: absolute;
+            top: -16px;
+            right: -5px;
+            color: #fff;
+            font-size: 1.5em;
+            opacity: 0.8;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+
+        .modal-container header a.close-quote-modal:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .quote-modal-wrapper .modal-container header h2 {
+            color: #fff;
+            margin: 0;
+            margin-right: 1em;
+        }
+
+        .quote-modal-wrapper .modal-container header p {
+            color: #fff;
+            margin: 0;
+            margin-bottom: -0.5em;
+        }
+
+        .quote-modal-wrapper .products-container {
+            padding: 2.5em 1.5em;
+            padding-bottom: 1.5em;
+        }
+
+        .quote-swiper-container .swiper-slide {
+            width: 32%;
+            border: 1px solid #a3b1b3;
+            border-radius: 6px;
+            padding: 1.3em 1.5em;
+            background: #F1F7F8;
+        }
+
+        .quote-card .top {
+            display: flex;
+            align-items: center;
+        }
+
+        .quote-card .top img {
+            height: 55px;
+        }
+
+        .quote-card .top h3 {
+            margin-left: 1.5em;
+        }
+
+        .quote-card .cta-wrapper {
+            padding-top: 1.5em;
+        }
+
+        .quote-card .cta-wrapper .outline-link {
+            background-color: #5B6770;
+            font-size: 1.2rem;
+        }
+
+        .quote-swiper-container .swiper-pagination {
+            position: relative;
+            padding-top: 2em;
+        }
+
+        .swiper-pagination-bullet {
+            width: 14px;
+            height: 14px;
+            border: 1px solid #5B6770;
+            outline: none;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #5B6770;
+        }
+
+        /* responsive */
+        @media only screen and (max-width: 767px) {
+            .products-section-1 .row .col {
+                width: 100%;
+            }
+
+            .hero-section {
+                min-height: 350px;
+                position: relative;
+            }
+
+            section#hero-section:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.3607843137254902);
+                z-index: 55;
+            }
+
+            .products-swiper-container .swiper-slide {
+                width: 45%;
+            }
+
+            .products-swiper-container .swiper-slide a img {
+                width: 100px;
+            }
+
+            .hero-section .content {
+                z-index: 999;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5em;
+                text-align: center;
+            }
+
+            .navbar-light .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml;charset=utf8,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+            }
+
+            ._navbar-select {
+                display: none;
+            }
+
+            .navbar-logo {
+                width: 70px;
+            }
+
+            .intro-section .content {
+                margin-bottom: 0.5em;
+            }
+
+            .featured-product-section .col-text .content {
+                max-width: 100%;
+            }
+
+            .featured-product-section .col-img {
+                position: relative;
+            }
+
+            .featured-product-section .col-img .bg {
+                width: 100%;
+            }
+
+            .featured-product-section-2 .col-text {
+                padding-right: 1em;
+                padding-left: 1em;
+            }
+
+            .main-footer .bottom-row {
+                padding-left: 1em;
+                padding-right: 1em;
+            }
+
+            .intro-section .col-md-4 .content .h1 {
+                font-size: 2em;
+            }
+
+            .products-section-1 .row .col .content {
+                margin-bottom: 1em;
+            }
+
+            .main-footer .bottom-row p,
+            .main-footer .bottom-row a,
+            .main-footer .bottom-row h4 {
+                font-size: 0.85em;
+            }
+
+            .main-footer .bottom-row .social-wrapper .social a .fab {
+                background-color: #ba0c2f;
+                border-radius: 50%;
+                color: #fff;
+                display: inline-block;
+                height: 30px;
+                line-height: 30px;
+                margin: auto 3px;
+                width: 30px;
+                font-size: 14px;
+                text-align: center;
+            }
+
+            .featured-product-section-2 .col-img .content .h1 {
+                font-size: 2em;
+            }
+
+            .featured-product-section .col-img .content {
+                padding-left: 0;
+            }
+
+            .featured-product-section .col-img .content .big-text {
+                font-size: 5em;
+            }
+
+            .subscription-section .col-md-6 h2 {
+                margin-bottom: 1em;
+            }
+
+            .cta-section {
+                padding-bottom: 0;
+            }
+
+            .cta-section .col-md-5 {
+                margin-top: 1.5em;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                padding-bottom: 2em;
+            }
+
+            .navbar-light .navbar-toggler {
+                outline: none;
+            }
+
+            ._navbar .navbar-collapse {
+                padding-bottom: 1em;
+            }
+
+            ._main-navigation-ul .nav-item::after {
+                height: 1px;
+            }
+
+            .quote-modal-wrapper .modal-container header h2 {
+                margin-right: 0.5em;
+                font-size: 1.2rem;
+                margin-bottom: 0.3em;
+            }
+
+            .quote-modal-wrapper .products-container {
+                padding: 2em 1.2em;
+                padding-bottom: 1.5em;
+            }
+
+            .quote-modal-wrapper {
+                max-width: 90%;
+            }
+
+            .quote-modal-wrapper .modal-container header {
+                flex-wrap: wrap;
+            }
+
+            .quote-swiper-container .swiper-slide {
+                width: 80%;
+                padding: 1.3em 1.5em;
+            }
+
+            .quote-card .top img {
+                height: 40px;
+            }
+
+            .quote-card .cta-wrapper .outline-link {
+                background-color: #5B6770;
+                font-size: 1rem;
+                min-width: 150px;
+            }
+
+            .quote-card .top h3 {
+                margin-left: 0.8em;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header>
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-red _navbar">
+                    <a class="navbar-brand" href="#">
+                        <img src="img/logo.png" alt="Jubilee Logo" class="navbar-logo" />
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav mt-2 mt-lg-0 margin-auto _main-navigation-ul">
+                            <li class="nav-item active-link">
+                                <a class="nav-link" href="#">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Health</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Life</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">General</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Financial Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 _navbar-select">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Ke
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Tanzania</a>
+                                    <a class="dropdown-item" href="#">Uganda</a>
+                                    <a class="dropdown-item" href="#">Rwanda</a>
+                                    <a class="dropdown-item" href="#">Burundi</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    En
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Kiswahili</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Login</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0" id="_navbar-search-form">
+                            <input class="form-control mr-sm-2 _hidden" type="search" placeholder="Search"
+                                aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0 _btn-search" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <section id="hero-section" class="hero-section">
+            <div class="bg" style="background-image: url('img/video-banner.jpg');"></div>
+            <div class="content">
+                <h1 class="title">Live Free with <span>Jubilee Insurance</span></h1>
+                <div class="cta-wrapper">
+                    <a href="#" class="primary-link open-quote-modal">Get a Quote</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="intro-section" class="intro-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="content">
+                            <div class="h4">Promoting a</div>
+                            <div class="h1">LIVE FREE Lifestyle</div>
+                            <div class="h3">since <span class="h1-inner">1937</span></div>
+                        </div>
+                    </div>
+                    <div class="offset-md-1 col-md-7">
+                        <div class="content">
+                            <p>Jubilee Insurance Ltd, was established as the first incorporated Insurance
+                                Company based in Mombasa in August 1937. We have since spread our wings and
+                                sphere of influence as the No. 1 Insurance Company in the region with offices in
+                                Kenya, Uganda, Tanzania, Burundi and Mauritius and are recognized as the largest
+                                Composite Insurer in East Africa with over 450,000 clients.</p>
+                            <div class="cta-wrapper">
+                                <a href="#" class="outline-link">Read more About Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="products-section-1" class="products-section-1">
+            <h3 class="title">Insurance for Motor, Health, Travel, Life &amp; More</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="content">
+                            <header>
+                                <div class="bg" style="background-image: url('img/product-thumbnail.jpg')"></div>
+                            </header>
+                            <div class="inner">
+                                <h5>Health Insurance</h5>
+                                <p>Peace of mind comes from knowing you and your family are covered and protected by the
+                                    best
+                                    health insurance cover.</p>
+                                <div class="cta-wrapper">
+                                    <a href="#" class="flat-link">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content">
+                            <header>
+                                <div class="bg" style="background-image: url('img/product-thumbnail.jpg')"></div>
+                            </header>
+
+                            <div class="inner">
+                                <h5>Life Insurance &amp; Pensions</h5>
+                                <p>Whether saving for your child’s education, a new car or your retirement. Jubilee life
+                                    has
+                                    the perfect plan, A life saving plan.</p>
+                                <div class="cta-wrapper">
+                                    <a href="#" class="flat-link">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content">
+                            <header>
+                                <div class="bg" style="background-image: url('img/product-thumbnail.jpg')"></div>
+                            </header>
+                            <div class="inner">
+                                <h5>General Insurance</h5>
+                                <p>At Jubilee General we cover … well, everything. And we cover everything from watches
+                                    to
+                                    warehouses. We have a policy perfect for you.</p>
+                                <div class="cta-wrapper">
+                                    <a href="#" class="flat-link">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content">
+                            <header>
+                                <div class="bg" style="background-image: url('img/product-thumbnail.jpg')"></div>
+                            </header>
+                            <div class="inner">
+                                <h5>Asset Management</h5>
+                                <p>Peace of mind comes from knowing you and your family are covered and protected by the
+                                    best health insurance cover.</p>
+                                <div class="cta-wrapper">
+                                    <a href="#" class="flat-link">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-section-2" class="products-section-2">
+            <h3 class="title">Learn more about our products</h3>
+            <div class="container">
+                <div class="swiper-container products-swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/icons/motor.png" alt="">
+                                <h5>Motor</h5>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/icons/travel.png" alt="">
+                                <h5>Travel</h5>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/icons/jitunze.png" alt="">
+                                <h5>J-itunze</h5>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/icons/motor.png" alt="">
+                                <h5>Motor</h5>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/icons/travel.png" alt="">
+                                <h5>Travel</h5>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/icons/jitunze.png" alt="">
+                                <h5>J-itunze</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+
+
+        <section id="featured-product-section" class="featured-product-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-text">
+                        <div class="content">
+                            <h3 class="title-left">Motor Insurance</h3>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry’s standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen book. It has
+                                survived not only five centuries, but also the leap into electronic typesetting,
+                                remaining essentially unchanged.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-img">
+                        <div class="bg" style="background-image: url('img/motor-insurance.jpg')"></div>
+                        <div class="content">
+                            <div class="h1">Save upto</div>
+                            <div class="big-text">10%</div>
+                            <div class="h2">With our Motor Insurance</div>
+                            <div class="cta-wrapper">
+                                <a href="#" class="outline-link">Save now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="featured-product-section-2" class="featured-product-section featured-product-section-2">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-6 col-img">
+                        <div class="bg" style="background-image: url('img/edu.jpg')"></div>
+                        <div class="content">
+                            <div class="h1">Secure</div>
+                            <div class="h1">Her</div>
+                            <div class="h1">Future today</div>
+                            <div class="h1">With our Education Plan</div>
+                            <div class="cta-wrapper">
+                                <a href="#" class="outline-link open-quote-modal">Get Quote</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-text">
+                        <div class="content">
+                            <h3 class="title-left">Education Plan</h3>
+                            <p>The smartest way to secure your child’s future begins with investing in the right
+                                educational plan. Our Career life plus cover is tailored to ensure your child’s dreams
+                                are fulfilled through a well-managed fund. Start saving today and we will help your
+                                child realize their aspirations.</p>
+                            <p>An education policy is a life insurance product specially designed as a savings tool to
+                                provide an amount of money for your child’s education.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="cta-section" id="cta-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <h4>Renew your Policy</h4>
+                            <p>Renewing Policy is as easy as 123</p>
+                            <div class="cta-wrapper">
+                                <a href="#" class="outline-link">Renew now ></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <h4>File a Claim</h4>
+                            <p>File and Track your Claims online</p>
+                            <div class="cta-wrapper">
+                                <a href="#" class="outline-link">File a claim ></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 offset-md-1">
+                        <div class="card special">
+                            <h6>Have a Question?</h6>
+                            <h2>Call us: +254 709 90 1562</h2>
+                            <div class="cta-wrapper">
+                                <a href="#" class="outline-link">Request a Call back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="subscription-section" id="subscription-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Subscribe to our <strong>Newsletter</strong></h2>
+                    </div>
+                    <div class="col-md-6">
+                        <form>
+                            <div class="form-row align-items-center">
+                                <div class="col-md-8">
+                                    <label class="sr-only" for="inlineFormInputGroup">Email</label>
+                                    <div class="input-group mb-2">
+                                        <input type="email" class="form-control" id="inlineFormInputGroup"
+                                            placeholder="Enter your email here...">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <button type="submit" class="">Subscribe</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="main-footer" id="main-footer" style="background-image: url('img/footer-bg.png');">
+            <div class="container">
+                <div class="row top-row">
+                    <div class="col-md-4 col-f">
+                        <div class="footer-content">
+                            <h4>Head Office</h4>
+                            <ul>
+                                <li>Jubilee Insurance House, Wabera Street</li>
+                                <li>&nbsp;</li>
+                                <li>P.O. Box 30376 - 00100 Nairobi, Kenya</li>
+                                <li>Telephone: +254 (0) 20 328 1000</li>
+                                <li>Fax: +254 (0) 20 328 1150</li>
+                                <li>info@jubileekenya.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-f">
+                        <div class="footer-content">
+                            <h4>Our Initiatives</h4>
+                            <ul>
+                                <li><a href="#">The Blue Company</a></li>
+                                <li><a href="#">Medical Initiative</a></li>
+                                <li><a href="#">Corporate Social Responsibility</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-f">
+                        <div class="footer-content">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Leadership</a></li>
+                                <li><a href="#">Community</a></li>
+                                <li><a href="#">Governance</a></li>
+                                <li><a href="#">Careers</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-f">
+                        <div class="footer-content">
+                            <h4>Get Resources</h4>
+                            <ul>
+                                <li><a href="#">Knowledge</a></li>
+                                <li><a href="#">Downloads</a></li>
+                                <li><a href="#">Blog</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row bottom-row">
+                    <div class="col_">
+                        <p>&copy; 2019 | All Rights Reserved | <a href="#">Powered by Jubilee ICT</a></p>
+                    </div>
+                    <div class="col_">
+                        <p><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
+                    </div>
+                    <div class="col_">
+                        <div class="social-wrapper">
+                            <h4>Connect with us</h4>
+                            <span class="social">
+                                <a href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div class="quote-modal-container">
+            <div class="quote-modal-wrapper">
+                <div class="modal-container">
+                    <header>
+                        <h2>Get a Quote</h2>
+                        <p>Choose a Product below to get started</p>
+                        <a href="#" class="close-quote-modal">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </header>
+
+                    <div class="products-container">
+                        <div class="swiper-container quote-swiper-container">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <div class="quote-card">
+                                        <div class="top">
+                                            <img src="img/car.png" alt="" />
+                                            <h3>Motor</h3>
+                                        </div>
+                                        <div class="cta-wrapper">
+                                            <a href="#" class="outline-link">Choose product</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="quote-card">
+                                        <div class="top">
+                                            <img src="img/flight.png" alt="" />
+                                            <h3>Travel</h3>
+                                        </div>
+                                        <div class="cta-wrapper">
+                                            <a href="#" class="outline-link">Choose product</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="quote-card">
+                                        <div class="top">
+                                            <img src="img/heart.png" alt="" />
+                                            <h3>Jitunze</h3>
+                                        </div>
+                                        <div class="cta-wrapper">
+                                            <a href="#" class="outline-link">Choose product</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="quote-card">
+                                        <div class="top">
+                                            <img src="img/car.png" alt="" />
+                                            <h3>Motor</h3>
+                                        </div>
+                                        <div class="cta-wrapper">
+                                            <a href="#" class="outline-link">Choose product</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="quote-card">
+                                        <div class="top">
+                                            <img src="img/flight.png" alt="" />
+                                            <h3>Travel</h3>
+                                        </div>
+                                        <div class="cta-wrapper">
+                                            <a href="#" class="outline-link">Choose product</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            var mySwiper = new Swiper('.products-swiper-container', {
+                slidesPerView: 'auto',
+                spaceBetween: 20,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                }
+            });
+
+            var mySwiperQuote = new Swiper('.quote-swiper-container', {
+                slidesPerView: 'auto',
+                spaceBetween: 20,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                }
+            });
+
+            /* open quote modal */
+            $("body").on("click", ".open-quote-modal", function (e) {
+                e.preventDefault();
+                $(".quote-modal-container").addClass("open");
+            });
+
+            /* Close quote modal */
+            $("body").on("click", ".close-quote-modal", function (e) {
+                e.preventDefault();
+                $(".quote-modal-container").removeClass("open");
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>
